@@ -53,6 +53,12 @@ Si en la pantalla principal aparece un **aviso amarillo**, tócalo y activa lo q
 
 **4. Ponles nombre y etiquetas.** Toca un sueño para escucharlo, cambiarle el título, escribir notas y marcar etiquetas como *Lúcido*, *Pesadilla* o *Volar*. Toca *+ Nueva* para crear las tuyas, o *Etiquetas* para renombrarlas o borrarlas.
 
+**5. Compártelo.** En la ficha del sueño toca *Compartir sueño* y elige:
+
+- **Vídeo con toda la info**: tu voz con el título, la fecha, las etiquetas y las notas en pantalla. Se ve y se oye directamente en WhatsApp, Telegram o donde quieras.
+- **Solo el audio**: la grabación tal cual.
+- **Solo el texto**: título, fecha, etiquetas y notas, para pegarlo en un chat.
+
 **¿Te ha venido un sueño a la cabeza durante el día?** Toca *Grabar ahora* en la pestaña *Sueños*.
 
 ## Preguntas frecuentes
@@ -60,7 +66,7 @@ Si en la pantalla principal aparece un **aviso amarillo**, tócalo y activa lo q
 <details>
 <summary><b>¿Dónde se guardan mis sueños? ¿Alguien más puede oírlos?</b></summary>
 <br>
-Solo en tu móvil. El Soñadero no usa internet ni envía nada a ningún sitio. Si desinstalas la app, las grabaciones se borran.
+Solo en tu móvil. El Soñadero no usa internet ni envía nada a ningún sitio: un sueño solo sale del móvil si tú lo compartes. Si desinstalas la app, las grabaciones se borran.
 </details>
 
 <details>

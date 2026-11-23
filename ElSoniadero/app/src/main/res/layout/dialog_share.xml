@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="24dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="serif"
+        android:textStyle="bold|italic"
+        android:textColor="@color/neon"
+        android:textSize="26sp"
+        android:text="Compartir sueño" />
+
+    <TextView
+        android:id="@+id/tvDream"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="18dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/mist"
+        android:textSize="15sp" />
+
+    <!-- Vídeo (recomendado) -->
+    <LinearLayout
+        android:id="@+id/optVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/option_primary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/icon_circle_night"
+            android:gravity="center"
+            android:textColor="@color/neon"
+            android:textSize="18sp"
+            android:text="▶" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/badge_night"
+                android:maxLines="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:letterSpacing="0.08"
+                android:textColor="@color/neon"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:text="RECOMENDADO" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/night"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="Vídeo con toda la info" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:alpha="0.8"
+                android:lineSpacingMultiplier="1.15"
+                android:textColor="@color/night"
+                android:textSize="13sp"
+                android:text="Tu voz con título, fecha, etiquetas y notas en pantalla. Ideal para WhatsApp." />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Audio -->
+    <LinearLayout
+        android:id="@+id/optAudio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/option_ghost"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/icon_circle_plum"
+            android:gravity="center"
+            android:textColor="@color/neon"
+            android:textSize="20sp"
+            android:text="♪" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/neon"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="Solo el audio" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:lineSpacingMultiplier="1.15"
+                android:textColor="@color/mist"
+                android:textSize="13sp"
+                android:text="La grabación tal cual, con el título como mensaje." />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Texto -->
+    <LinearLayout
+        android:id="@+id/optText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/option_ghost"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/icon_circle_plum"
+            android:gravity="center"
+            android:fontFamily="serif"
+            android:textStyle="bold|italic"
+            android:textColor="@color/neon"
+            android:textSize="17sp"
+            android:text="Aa" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/neon"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="Solo el texto" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:lineSpacingMultiplier="1.15"
+                android:textColor="@color/mist"
+                android:textSize="13sp"
+                android:text="Título, fecha, etiquetas y notas, sin audio." />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:textColor="@color/mist"
+        android:textSize="16sp"
+        android:text="Cancelar" />
+</LinearLayout>

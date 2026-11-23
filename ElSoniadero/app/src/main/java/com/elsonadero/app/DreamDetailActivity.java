@@ -69,6 +69,11 @@ public class DreamDetailActivity extends Activity {
         btnPlay.setOnClickListener(v -> togglePlay());
         findViewById(R.id.btnManageTags).setOnClickListener(v -> Ui.manageTags(this, this::reloadTags));
         findViewById(R.id.btnDelete).setOnClickListener(v -> confirmDelete());
+        findViewById(R.id.btnShare).setOnClickListener(v -> {
+            saveText();
+            if (player != null && player.isPlaying()) togglePlay();
+            DreamShare.showOptions(this, dream);
+        });
 
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar s, int p, boolean fromUser) {
