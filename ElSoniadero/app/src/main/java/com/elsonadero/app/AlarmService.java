@@ -9,9 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ServiceInfo;
 
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
 
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
@@ -24,6 +21,7 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.widget.RemoteViews;
 
 /** Hace sonar la alarma (volumen creciente + vibración) y muestra la pantalla de despertar. */
 public class AlarmService extends Service {
@@ -103,8 +101,16 @@ public class AlarmService extends Service {
         PendingIntent ignorePi = PendingIntent.getService(this, 13,
                 new Intent(this, AlarmService.class).setAction(ACTION_STOP), f);
 
-        int neon = getColor(R.color.neon);
         String text = (label != null && !label.isEmpty()) ? label : "Buenos días. ¿Qué has soñado?";
+
+        // Botones propios de la app dentro de la notificación (los estándar de Android se cortan
+        // con letra grande): Grabar = amarillo relleno, Posponer = borde amarillo, Ignorar = rojo.
+        RemoteViews rv = new RemoteViews(getPackageName(), R.layout.notif_alarm);
+        rv.setTextViewText(R.id.nText, text);
+        rv.setOnClickPendingIntent(R.id.nRecord, recordPi);
+        rv.setOnClickPendingIntent(R.id.nSnooze, snoozePi);
+        rv.setOnClickPendingIntent(R.id.nIgnore, ignorePi);
+
         return new Notification.Builder(this, CHANNEL)
                 .setSmallIcon(R.drawable.ic_moon)
                 // Notificación púrpura (permitido en servicios en primer plano) para que resalten los colores.
@@ -112,29 +118,16 @@ public class AlarmService extends Service {
                 .setColorized(true)
                 .setContentTitle("El Soñadero")
                 .setContentText(text)
+                .setStyle(new Notification.DecoratedCustomViewStyle())
+                .setCustomContentView(rv)
+                .setCustomBigContentView(rv)
+                .setCustomHeadsUpContentView(rv)
                 .setCategory(Notification.CATEGORY_ALARM)
                 .setVisibility(Notification.VISIBILITY_PUBLIC)
                 .setOngoing(true)
                 .setFullScreenIntent(ringPi, true)
                 .setContentIntent(ringPi)
-                // En notificaciones de color, Android usa el color del texto como relleno del botón:
-                // Grabar = amarillo relleno, Posponer = sin relleno, Ignorar = rojo.
-                .addAction(action(styled("Grabar", neon), recordPi))
-                .addAction(action(styled("Posponer", 0), snoozePi))
-                .addAction(action(styled("Ignorar", 0xFFFF4B4B), ignorePi))
                 .build();
-    }
-
-    private static Notification.Action action(CharSequence title, PendingIntent pi) {
-        return new Notification.Action.Builder(null, title, pi).build();
-    }
-
-    /** Texto del botón, algo más pequeño para que quepan los tres; "color" pinta el botón (0 = sin relleno). */
-    private static CharSequence styled(String s, int color) {
-        SpannableString t = new SpannableString(s);
-        int n = s.length();
-        if (color != 0) t.setSpan(new ForegroundColorSpan(color), 0, n, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return t;
     }
 
     private void startRinging() {
