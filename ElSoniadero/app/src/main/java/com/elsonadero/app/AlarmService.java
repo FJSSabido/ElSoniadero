@@ -8,6 +8,11 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ServiceInfo;
+
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -95,11 +100,16 @@ public class AlarmService extends Service {
                 new Intent(this, RecordActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), f);
         PendingIntent snoozePi = PendingIntent.getService(this, 12,
                 new Intent(this, AlarmService.class).setAction(ACTION_SNOOZE), f);
+        PendingIntent ignorePi = PendingIntent.getService(this, 13,
+                new Intent(this, AlarmService.class).setAction(ACTION_STOP), f);
 
+        int neon = getColor(R.color.neon);
         String text = (label != null && !label.isEmpty()) ? label : "Buenos días. ¿Qué has soñado?";
         return new Notification.Builder(this, CHANNEL)
                 .setSmallIcon(R.drawable.ic_moon)
-                .setColor(getColor(R.color.neon))
+                // Notificación púrpura (permitido en servicios en primer plano) para que resalten los colores.
+                .setColor(getColor(R.color.dusk))
+                .setColorized(true)
                 .setContentTitle("El Soñadero")
                 .setContentText(text)
                 .setCategory(Notification.CATEGORY_ALARM)
@@ -107,9 +117,24 @@ public class AlarmService extends Service {
                 .setOngoing(true)
                 .setFullScreenIntent(ringPi, true)
                 .setContentIntent(ringPi)
-                .addAction(new Notification.Action.Builder(null, "Posponer " + AlarmScheduler.SNOOZE_MINUTES + " min", snoozePi).build())
-                .addAction(new Notification.Action.Builder(null, "Apagar y grabar", recordPi).build())
+                // En notificaciones de color, Android usa el color del texto como relleno del botón:
+                // Grabar = amarillo relleno, Posponer = sin relleno, Ignorar = rojo.
+                .addAction(action(styled("Grabar", neon), recordPi))
+                .addAction(action(styled("Posponer", 0), snoozePi))
+                .addAction(action(styled("Ignorar", 0xFFFF4B4B), ignorePi))
                 .build();
+    }
+
+    private static Notification.Action action(CharSequence title, PendingIntent pi) {
+        return new Notification.Action.Builder(null, title, pi).build();
+    }
+
+    /** Texto del botón, algo más pequeño para que quepan los tres; "color" pinta el botón (0 = sin relleno). */
+    private static CharSequence styled(String s, int color) {
+        SpannableString t = new SpannableString(s);
+        int n = s.length();
+        if (color != 0) t.setSpan(new ForegroundColorSpan(color), 0, n, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return t;
     }
 
     private void startRinging() {
