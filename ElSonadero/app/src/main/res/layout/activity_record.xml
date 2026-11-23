@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/night"
+    android:paddingStart="28dp"
+    android:paddingEnd="28dp"
+    android:paddingTop="64dp"
+    android:paddingBottom="40dp">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Label"
+        android:textColor="@color/neon"
+        android:text="● Grabando" />
+
+    <TextView
+        android:id="@+id/tvPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:textColor="@color/ink"
+        android:textSize="30sp"
+        android:text="¿Qué has soñado?" />
+
+    <TextView
+        android:id="@+id/tvSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.25"
+        android:textColor="@color/mist"
+        android:textSize="16sp"
+        android:text="Cuéntalo tal como venga. Lugares, personas, cómo te sentías." />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <View
+            android:id="@+id/halo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/halo" />
+
+        <View
+            android:id="@+id/dot"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/dot" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="sans-serif-light"
+        android:fontFeatureSettings="tnum"
+        android:textColor="@color/ink"
+        android:textSize="44sp"
+        android:text="0:00" />
+
+    <Button
+        android:id="@+id/btnSave"
+        style="@style/BtnPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="72dp"
+        android:textSize="19sp"
+        android:text="Terminar y guardar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnPause"
+            style="@style/BtnGhost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="7dp"
+            android:text="Pausar" />
+
+        <Button
+            android:id="@+id/btnDiscard"
+            style="@style/BtnGhost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="7dp"
+            android:textColor="@color/rose"
+            android:text="Descartar" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/night"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="28dp">
+
+        <TextView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:textColor="@color/neon"
+            android:textSize="16sp"
+            android:text="‹  Sueños" />
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:fontFamily="serif"
+            android:hint="Ponle un título a este sueño"
+            android:inputType="textCapSentences|textMultiLine"
+            android:textColor="@color/ink"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/mist"
+            android:textSize="14sp" />
+
+        <!-- Reproductor -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/field"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/btnPlay"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/btn_primary"
+                android:gravity="center"
+                android:textColor="@color/night"
+                android:textSize="22sp"
+                android:text="▶" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <SeekBar
+                    android:id="@+id/seek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progressTint="@color/neon"
+                    android:thumbTint="@color/neon"
+                    android:progressBackgroundTint="@color/violet" />
+
+                <TextView
+                    android:id="@+id/tvPos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFeatureSettings="tnum"
+                    android:textColor="@color/mist"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            style="@style/Label"
+            android:text="Etiquetas" />
+
+        <com.elsonadero.app.FlowLayout
+            android:id="@+id/tagFlow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/btnManageTags"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:textColor="@color/mist"
+            android:textSize="14sp"
+            android:text="Renombrar o borrar etiquetas…" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            style="@style/Label"
+            android:text="Notas" />
+
+        <EditText
+            android:id="@+id/etNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/field"
+            android:gravity="top"
+            android:hint="Personas, lugares, colores, emociones… lo que recuerdes al escucharlo."
+            android:inputType="textCapSentences|textMultiLine"
+            android:lineSpacingMultiplier="1.25"
+            android:minLines="5"
+            android:padding="16dp"
+            android:textColor="@color/ink"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="28dp" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            style="@style/BtnGhost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/rose"
+            android:text="Borrar este sueño" />
+    </LinearLayout>
+</ScrollView>

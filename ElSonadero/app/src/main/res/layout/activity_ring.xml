@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/night"
+    android:paddingStart="28dp"
+    android:paddingEnd="28dp"
+    android:paddingTop="72dp"
+    android:paddingBottom="40dp">
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Label" />
+
+    <TextView
+        android:id="@+id/tvClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-thin"
+        android:textColor="@color/neon"
+        android:textSize="92sp"
+        android:fontFeatureSettings="tnum" />
+
+    <TextView
+        android:id="@+id/tvGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="serif"
+        android:textStyle="italic"
+        android:textColor="@color/ink"
+        android:textSize="28sp"
+        android:text="Buenos días" />
+
+    <TextView
+        android:id="@+id/tvHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.25"
+        android:textColor="@color/mist"
+        android:textSize="16sp"
+        android:text="Apaga la alarma y cuenta tu sueño en voz alta antes de que se esfume." />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnRecord"
+        style="@style/BtnPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="72dp"
+        android:textSize="19sp"
+        android:text="Apagar y contar mi sueño" />
+
+    <Button
+        android:id="@+id/btnSnooze"
+        style="@style/BtnGhost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Posponer 9 min" />
+
+    <TextView
+        android:id="@+id/btnJustStop"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:textColor="@color/mist"
+        android:textSize="15sp"
+        android:text="Solo apagar, hoy no recuerdo nada" />
+</LinearLayout>

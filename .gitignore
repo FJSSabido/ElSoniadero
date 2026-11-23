@@ -1,0 +1,12 @@
+# Copia de seguridad con datos personales del móvil (nunca se sube)
+copia-seguridad-movil/
+
+# Compilación de Android
+.gradle/
+**/build/
+local.properties
+*.apk
+.idea/
+*.iml
+.kotlin/
+captures/

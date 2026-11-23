@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Noche púrpura con luz de luciérnaga -->
+    <color name="night">#1A0B2E</color>
+    <color name="dusk">#2A1450</color>
+    <color name="plum">#3B1D6E</color>
+    <color name="violet">#8B5CF6</color>
+    <color name="neon">#E4FF1A</color>
+    <color name="neon_dim">#33E4FF1A</color>
+    <color name="ink">#F2EAFF</color>
+    <color name="mist">#B9A6D9</color>
+    <color name="rose">#FF5C8A</color>
+</resources>

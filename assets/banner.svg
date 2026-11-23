@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10061E"/>
+      <stop offset="1" stop-color="#2A1450"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8B5CF6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="crescent">
+      <rect width="1280" height="340" fill="white"/>
+      <circle cx="232" cy="142" r="72" fill="black"/>
+    </mask>
+  </defs>
+  <rect width="1280" height="340" rx="28" fill="url(#bg)"/>
+  <ellipse cx="640" cy="200" rx="560" ry="170" fill="url(#glow)"/>
+  <g fill="#F2EAFF" opacity="0.7">
+    <circle cx="90" cy="60" r="2"/><circle cx="380" cy="40" r="1.5"/><circle cx="520" cy="290" r="2"/>
+    <circle cx="760" cy="52" r="1.5"/><circle cx="1010" cy="70" r="2.5"/><circle cx="1180" cy="260" r="2"/>
+    <circle cx="1220" cy="120" r="1.5"/><circle cx="880" cy="300" r="1.5"/><circle cx="60" cy="280" r="1.5"/>
+    <circle cx="640" cy="24" r="1.5"/><circle cx="1100" cy="190" r="1.2"/><circle cx="330" cy="300" r="1.2"/>
+  </g>
+  <circle cx="200" cy="170" r="88" fill="#E4FF1A" mask="url(#crescent)"/>
+  <path d="M312 70 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6z" fill="#E4FF1A"/>
+  <path d="M338 128 l3.5 9 9 3.5 -9 3.5 -3.5 9 -3.5 -9 -9 -3.5 9 -3.5z" fill="#B9A6D9"/>
+  <text x="372" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-style="italic" font-weight="bold" fill="#E4FF1A">El Soñadero</text>
+  <text x="378" y="248" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="32" fill="#F2EAFF">Despertador y grabadora de sueños para Android</text>
+</svg>

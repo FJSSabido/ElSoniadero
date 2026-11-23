@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="150" viewBox="0 0 1280 150">
+  <rect width="1280" height="150" rx="20" fill="#1A0B2E"/>
+  <g font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20">
+    <rect x="30"  y="28" width="64" height="64" rx="14" fill="#1A0B2E" stroke="#3B1D6E" stroke-width="2"/>
+    <text x="110" y="56" fill="#F2EAFF" font-weight="bold">Noche</text><text x="110" y="84" fill="#B9A6D9">#1A0B2E</text>
+    <rect x="280" y="28" width="64" height="64" rx="14" fill="#2A1450"/>
+    <text x="360" y="56" fill="#F2EAFF" font-weight="bold">Ocaso</text><text x="360" y="84" fill="#B9A6D9">#2A1450</text>
+    <rect x="530" y="28" width="64" height="64" rx="14" fill="#8B5CF6"/>
+    <text x="610" y="56" fill="#F2EAFF" font-weight="bold">Violeta</text><text x="610" y="84" fill="#B9A6D9">#8B5CF6</text>
+    <rect x="780" y="28" width="64" height="64" rx="14" fill="#E4FF1A"/>
+    <text x="860" y="56" fill="#F2EAFF" font-weight="bold">Fosforito</text><text x="860" y="84" fill="#B9A6D9">#E4FF1A</text>
+    <rect x="1030" y="28" width="64" height="64" rx="14" fill="#B9A6D9"/>
+    <text x="1110" y="56" fill="#F2EAFF" font-weight="bold">Bruma</text><text x="1110" y="84" fill="#B9A6D9">#B9A6D9</text>
+    <text x="30" y="128" fill="#B9A6D9" font-size="17">Paleta de la app · res/values/colors.xml</text>
+  </g>
+</svg>
