@@ -1,7 +1,6 @@
 package com.elsonadero.app;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -174,17 +173,16 @@ public class DreamDetailActivity extends Activity {
     }
 
     private void confirmDelete() {
-        new AlertDialog.Builder(this)
-                .setTitle("¿Borrar este sueño?")
-                .setMessage("Se borrarán la grabación y las notas. No se puede deshacer.")
-                .setPositiveButton("Borrar", (d, w) -> {
+        new Ui.Sheet(this, "¿Borrar este sueño?")
+                .message("Se borrarán la grabación y las notas. No se puede deshacer.")
+                .danger("Borrar sueño", () -> {
                     releasePlayer();
                     deleted = true;
                     DreamStore.delete(this, dream);
                     Ui.toast(this, "Sueño borrado");
                     finish();
                 })
-                .setNegativeButton("Cancelar", null)
+                .cancel("Cancelar", null)
                 .show();
     }
 

@@ -3,7 +3,6 @@ package com.elsonadero.app;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -218,10 +217,11 @@ public class MainActivity extends Activity {
         }
         hint.setText(Ui.daysSummary(mask[0]));
 
-        AlertDialog.Builder b = new AlertDialog.Builder(this)
-                .setTitle(existing == null ? "Nueva alarma" : "Editar alarma")
-                .setView(v)
-                .setPositiveButton("Guardar", (d, w) -> {
+        Ui.styleField(etLabel);
+
+        Ui.Sheet s = new Ui.Sheet(this, existing == null ? "Nueva alarma" : "Editar alarma")
+                .view(v)
+                .primary("Guardar", () -> {
                     a.hour = tp.getHour();
                     a.minute = tp.getMinute();
                     a.days = mask[0];
@@ -231,16 +231,15 @@ public class MainActivity extends Activity {
                     AlarmScheduler.schedule(this, a);
                     Ui.toast(this, Ui.inHowLong(a.nextTrigger(System.currentTimeMillis())));
                     refreshAlarms();
-                })
-                .setNegativeButton("Cancelar", null);
+                });
         if (existing != null) {
-            b.setNeutralButton("Borrar", (d, w) -> {
+            s.dangerGhost("Borrar alarma", () -> {
                 AlarmScheduler.cancel(this, a.id);
                 AlarmStore.delete(this, a.id);
                 refreshAlarms();
             });
         }
-        b.show();
+        s.cancel("Cancelar", null).show();
     }
 
     private class AlarmAdapter extends BaseAdapter {

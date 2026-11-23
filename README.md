@@ -3,7 +3,7 @@
 <p align="center"><b>El despertador que te deja contar tus sueños antes de que se esfumen.</b><br>
 Al apagar la alarma, El Soñadero empieza a grabar. Tú solo hablas.</p>
 
-<p align="center"><img src="assets/capturas.png" alt="Capturas: alarma, pantalla de despertar, grabadora, diario y ficha de un sueño" width="100%"></p>
+<p align="center"><img src="assets/capturas.png" alt="Capturas: pantalla de despertar, grabadora, diario de sueños, compartir y etiquetas" width="100%"></p>
 
 <p align="center"><a href="El%20Soñadero%20-%20presentación.mp4"><b>▶ Ver el vídeo de presentación</b></a> (1 minuto)</p>
 

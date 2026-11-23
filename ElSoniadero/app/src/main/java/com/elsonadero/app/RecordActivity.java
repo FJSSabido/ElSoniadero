@@ -2,7 +2,6 @@ package com.elsonadero.app;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
@@ -205,10 +204,10 @@ public class RecordActivity extends Activity {
     }
 
     private void confirmDiscard() {
-        new AlertDialog.Builder(this)
-                .setTitle("¿Descartar la grabación?")
-                .setMessage("Se borrará lo que has grabado ahora.")
-                .setPositiveButton("Descartar", (d, w) -> {
+        new Ui.Sheet(this, "¿Descartar la grabación?")
+                .message("Se borrará lo que has grabado ahora.")
+                .primary("Seguir grabando", null)
+                .danger("Descartar", () -> {
                     finished = true;
                     recording = false;
                     handler.removeCallbacksAndMessages(null);
@@ -217,7 +216,6 @@ public class RecordActivity extends Activity {
                     if (outFile != null) outFile.delete();
                     finish();
                 })
-                .setNegativeButton("Seguir grabando", null)
                 .show();
     }
 

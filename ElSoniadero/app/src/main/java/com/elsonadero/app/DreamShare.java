@@ -7,14 +7,10 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.media.Image;
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
@@ -45,27 +41,12 @@ public final class DreamShare {
     public static void showOptions(Activity a, DreamStore.Dream d) {
         View v = LayoutInflater.from(a).inflate(R.layout.dialog_share, null);
         ((TextView) v.findViewById(R.id.tvDream)).setText(d.title.isEmpty() ? "Sin título" : d.title);
-        Dialog dlg = styledDialog(a, v, true);
+        Dialog dlg = Ui.styledDialog(a, v, true);
         v.findViewById(R.id.optVideo).setOnClickListener(x -> { dlg.dismiss(); shareVideo(a, d); });
         v.findViewById(R.id.optAudio).setOnClickListener(x -> { dlg.dismiss(); shareAudio(a, d); });
         v.findViewById(R.id.optText).setOnClickListener(x -> { dlg.dismiss(); shareText(a, d); });
         v.findViewById(R.id.btnCancel).setOnClickListener(x -> dlg.dismiss());
         dlg.show();
-    }
-
-    /** Ventana flotante con el estilo de la app (fondo púrpura redondeado), sin el marco del sistema. */
-    static Dialog styledDialog(Activity a, View content, boolean cancelable) {
-        Dialog dlg = new Dialog(a);
-        dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dlg.setContentView(content);
-        dlg.setCancelable(cancelable);
-        Window w = dlg.getWindow();
-        if (w != null) {
-            w.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            int width = a.getResources().getDisplayMetrics().widthPixels - 2 * Ui.dp(a, 20);
-            w.setLayout(Math.min(width, Ui.dp(a, 460)), WindowManager.LayoutParams.WRAP_CONTENT);
-        }
-        return dlg;
     }
 
     // ---------- Texto ----------
@@ -169,7 +150,7 @@ public final class DreamShare {
         box.addView(cancelBtn, lp);
 
         final boolean[] cancel = {false};
-        Dialog dlg = styledDialog(a, box, false);
+        Dialog dlg = Ui.styledDialog(a, box, false);
         cancelBtn.setOnClickListener(x -> { cancel[0] = true; msg.setText("Cancelando…"); });
         dlg.show();
 
