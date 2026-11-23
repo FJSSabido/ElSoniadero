@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -106,11 +108,69 @@ public class MainActivity extends Activity {
     }
 
     private void showTab(boolean dreamsTab) {
+        boolean animate = paneAlarms.getWidth() > 0 && dreamsTab != showingDreams;
         showingDreams = dreamsTab;
-        paneAlarms.setVisibility(dreamsTab ? View.GONE : View.VISIBLE);
-        paneDreams.setVisibility(dreamsTab ? View.VISIBLE : View.GONE);
         styleTab(tabAlarms, !dreamsTab);
         styleTab(tabDreams, dreamsTab);
+        View in = dreamsTab ? paneDreams : paneAlarms;
+        View out = dreamsTab ? paneAlarms : paneDreams;
+        if (!animate) {
+            in.setVisibility(View.VISIBLE);
+            out.setVisibility(View.GONE);
+            return;
+        }
+        // Deslizamiento: Sueños entra por la derecha, Alarmas por la izquierda.
+        float w = paneAlarms.getWidth();
+        float dir = dreamsTab ? 1 : -1;
+        out.animate().cancel();
+        in.animate().cancel();
+        in.setTranslationX(dir * w);
+        in.setVisibility(View.VISIBLE);
+        in.animate().translationX(0).setDuration(240).start();
+        out.animate().translationX(-dir * w).setDuration(240).withEndAction(() -> {
+            out.setVisibility(View.GONE);
+            out.setTranslationX(0);
+        }).start();
+        if (!dreamsTab) etSearch.clearFocus();
+    }
+
+    // ---------- Deslizar entre pestañas ----------
+
+    private GestureDetector swipe;
+    private boolean swipeBlocked;
+
+    private GestureDetector swipeDetector() {
+        if (swipe == null) {
+            final float minDist = Ui.dp(this, 70), minVel = Ui.dp(this, 300);
+            swipe = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onFling(MotionEvent e1, MotionEvent e2, float vx, float vy) {
+                    if (e1 == null || swipeBlocked) return false;
+                    float dx = e2.getX() - e1.getX(), dy = e2.getY() - e1.getY();
+                    if (Math.abs(dx) < minDist || Math.abs(dx) < Math.abs(dy) * 1.5f || Math.abs(vx) < minVel) return false;
+                    if (dx < 0 && !showingDreams) showTab(true);
+                    else if (dx > 0 && showingDreams) showTab(false);
+                    else return false;
+                    return true;
+                }
+            });
+        }
+        return swipe;
+    }
+
+    /** Detecta el deslizamiento horizontal en toda la pantalla sin quitar los toques a las listas. */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getActionMasked() == MotionEvent.ACTION_DOWN) {
+            // La fila de etiquetas se desplaza de lado: ahí no se cambia de pestaña.
+            View chips = (View) filterRow.getParent();
+            int[] loc = new int[2];
+            chips.getLocationOnScreen(loc);
+            swipeBlocked = showingDreams && chips.isShown()
+                    && ev.getRawY() >= loc[1] && ev.getRawY() <= loc[1] + chips.getHeight();
+        }
+        swipeDetector().onTouchEvent(ev);
+        return super.dispatchTouchEvent(ev);
     }
 
     private void styleTab(TextView t, boolean on) {
